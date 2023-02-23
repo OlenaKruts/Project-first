@@ -1,8 +1,9 @@
 :root {
-  --bg-hero: #f7f7f7;
   --primery-black: #121212;
   --primery-white: #f7f7f7;
   --primery-text: #000000;
+  --secondary-text: #d8d7d7;
+  --cubik: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1,
@@ -24,6 +25,7 @@ ul {
 .list {
   list-style: none;
 }
+
 .link {
   text-decoration: none;
 }
@@ -31,6 +33,19 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }
 .section {
   padding-bottom: 64px;
@@ -40,19 +55,7 @@ img {
   padding-left: 20px;
   height: 100%;
 }
-.section-hero {
-  padding-top: 40px;
-  /*background-color: var(--bg-hero)*/
-  background-color: tomato;
-}
-.section-kitchen {
-  /*background-color: var(--primery-white);*/
-  background-color: aqua;
-}
-.section-menu {
-  /*background-color: var(--primery-black);*/
-  background-color: coral;
-}
+
 .body {
   font-family: "DM Sans";
   font-weight: 400;
@@ -61,7 +64,11 @@ img {
 
   color: var(--primery-text);
 }
-
+/*==================HERO==================*/
+.section-hero {
+  padding-top: 40px;
+  background-color: var(--primery-white);
+}
 .hero-title {
   margin-bottom: 24px;
   font-weight: 400;
@@ -70,31 +77,34 @@ img {
   text-transform: uppercase;
   color: var(--primery-black);
 }
-.button-main {
-  /*display: flex;
-  flex-direction: row;
-  align-items: flex-start;*/
+.button-white,
+.button-black {
   padding: 8px 18px;
-  margin-right: 10px;
 
   min-width: 128px;
-  height: 34px;
-
-  border: 0.8px solid #121212;
-  border-radius: 32px;
+  /*height: 34px;*/
   font-family: "DM Sans";
-
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
 
   letter-spacing: -0.02em;
   text-transform: uppercase;
-
-  color: #121212;
+  border-radius: 32px;
 }
-.hero-text,
-.hero-text-italic {
+.button-white-link {
+  color: var(--primery-black);
+}
+
+.button-white {
+  background-color: var(--primery-white);
+  border: 0.8px solid var(--primery-black);
+  color: var(--primery-black);
+}
+.button-book-table {
+  margin-right: 10px;
+}
+.hero-text {
   line-height: 1.29;
 
   letter-spacing: 0.05em;
@@ -102,26 +112,435 @@ img {
 
   color: var(--primery-black);
 }
-.hero-text-italic {
+.italic {
   font-style: italic;
 }
-/*==================KITCHEN==================*/
-.kitchen-title {
-  display: none;
-}
-.kitchen-text-one,
-.kitchen-text-second,
-.kitchen-text-italic {
-  line-height: 1.29;
+/*==================/HERO/==================*/
 
+/*==================KITCHEN==================*/
+.section-kitchen {
+  background-color: var(--primery-white);
+}
+.container-kitchen-all-pic {
+  margin-bottom: 32px;
+}
+.cooker-img {
+  width: 100%;
+}
+.cooker-pic {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.container-kitchen-small-pic {
+  display: flex;
+  column-gap: 20px;
+}
+.kitchen-small-pic {
+  flex-basis: calc((100% - 20px) / 2);
+}
+
+.kitchen-text-one,
+.kitchen-text-second {
+  font-family: "DM Sans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 
   color: var(--primery-text);
 }
-.kitchen-text-italic {
-  font-style: italic;
+
+/*==================/KITCHEN/==================*/
+/*======================MENU=====================*/
+.section-menu {
+  background-color: var(--primery-black);
 }
-.kitchen-text-one {
-  margin-bottom: 24px;
+.menu-title {
+  margin-bottom: 36px;
+  font-family: "DM Sans";
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-align: center;
+
+  color: var(--primery-white);
+}
+
+.menu-item-title {
+  margin-bottom: 32px;
+  font-family: "DM Sans";
+  font-style: italic;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: var(--primery-white);
+}
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.menu-item:not(:first-child) {
+  padding-top: 14px;
+}
+.menu-text {
+  max-width: 233px;
+}
+.menu-name {
+  margin-bottom: 8px;
+  font-family: "DM Sans";
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+
+  color: var(--primery-white);
+}
+.menu-content {
+  font-family: "Geometria";
+
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  color: rgba(216, 215, 215, 0.5);
+}
+.menu-weight {
+  margin-bottom: 14px;
+  font-family: "DM Sans";
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.02em;
+  text-align: end;
+
+  color: var(--secondary-text);
+}
+
+.menu-price {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  text-align: end;
+
+  color: var(--primery-white);
+}
+.button-black {
+  background-color: var(--primery-black);
+  border: 0.8px solid var(--primery-white);
+  color: var(--primery-white);
+}
+/*======================/MENU/=====================*/
+/*======================MODAL=====================*/
+.section-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+
+  padding-top: 24px;
+  padding-bottom: 40px;
+  background-color: var(--primery-black);
+  transition: opacity 250ms var(--cubik), visibility 250ms var(--cubik);
+}
+.section-backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.container-modal {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.modal-title {
+  margin-bottom: 40px;
+
+  text-align: center;
+  font-family: "DM Sans";
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.36;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: var(--primery-white);
+}
+
+.modal-icon-close {
+  stroke: #000000;
+  fill: #000000;
+}
+.close-modal {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+}
+
+.wrap-modal {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  row-gap: 32px;
+}
+.modal-label {
+  display: block;
+  width: 100%;
+}
+
+.modal-label-title {
+  display: block;
+
+  font-family: "DM Sans";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: var(--primery-white);
+}
+.modal-wrap-name {
+}
+
+.modal-input {
+  position: relative;
+  text-align: end;
+  width: 100%;
+  margin-bottom: 8px;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  color: var(--primery-white);
+  background-color: var(--primery-black);
+  border: transparent;
+  border-bottom: 0.8px solid rgba(247, 247, 247, 0.2);
+}
+.modal-label-text {
+  display: block;
+
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: var(--secondary-text);
+}
+
+.button-reserv-black {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-right: 49px;
+  padding-left: 48px;
+}
+
+/*------------------------MOBILE----------------------------*/
+@media screen and (min-width: 375px) {
+  .container {
+    max-width: 375px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/*---------------------до 767 рх----------------*/
+@media screen and (max-width: 767px) {
+  .kitchen-text-one {
+    margin-bottom: 24px;
+  }
+}
+/*---------------------/до 767 рх/----------------*/
+
+/*-------------------------------TABLET----------------------------*/
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+  .section {
+    padding-bottom: 80px;
+    padding-top: 80px;
+  }
+  /*=====================TAB-HERO==================*/
+  .section-hero {
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+  /*=====================/TAB-HERO/==================*/
+  /*=====================TAB-KITCHEN==================*/
+  .container-kitchen-all-pic {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .cooker-pic {
+    width: 388px;
+  }
+  .container-kitchen-small-pic {
+    flex-direction: column;
+    width: 284px;
+    margin-right: 32px;
+    row-gap: 16px;
+  }
+  .kitchen-text-both {
+    display: flex;
+    column-gap: 32px;
+  }
+  .kitchen-text-one,
+  .kitchen-text-second {
+    flex-basis: ((100% - 32px) / 2);
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  /*=====================/TAB-KITCHEN/==================*/
+  /*=====================TAB-MENU==================*/
+  .menu-title {
+    margin-bottom: 64px;
+    font-size: 40px;
+    line-height: 1.1;
+  }
+  .menu-item-title {
+    font-size: 24px;
+    line-height: 1;
+  }
+  .menu-text {
+    max-width: 345px;
+  }
+  .menu-name {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .menu-content {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .menu-weight {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+  .menu-price {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  /*=====================TAB-MENU==================*/
+  /*=====================TAB-MODAL==================*/
+  .section-backdrop {
+    padding-top: 32px;
+    padding-bottom: 60px;
+  }
+  .container-modal {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .wrap-modal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 32px;
+    row-gap: 32px;
+    margin-bottom: 80px;
+  }
+  .modal-label {
+    flex-basis: calc((100% - 32px) / 2);
+  }
+  .modal-title {
+    margin-bottom: 60px;
+    text-align: start;
+  }
+
+  .modal-label-name {
+    order: 1;
+  }
+  .modal-label-numder {
+    order: 2;
+  }
+  .modal-label-date {
+    order: 4;
+  }
+  .modal-label-tel {
+    order: 3;
+  }
+  .modal-title {
+    font-size: 36px;
+    line-height: 1.11;
+  }
+
+  /*=====================/TAB-MODAL/==================*/
+}
+/*---------------------------DECKTOP------------------------*/
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1158px;
+  }
+  .section {
+    padding-bottom: 100px;
+    padding-top: 100px;
+  }
+  /*=====================/DECK-HERO/==================*/
+  .section-hero {
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
+  /*=====================/DECK-HERO/==================*/
+  /*=====================DECK-KITCHEN==================*/
+  .kitchen-text-one,
+  .kitchen-text-second {
+    font-weight: 500;
+  }
+  /*=====================/DECK-KITCHEN/==================*/
+  /*=====================DECK-MENU==================*/
+  .container-menu {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 74px;
+    column-gap: 56px;
+  }
+  .container-menu-item {
+    min-width: 515px;
+  }
+  .menu-title {
+    margin-bottom: 100px;
+    font-size: 40px;
+    line-height: 1.1;
+  }
+  .menu-item-title {
+    font-size: 24px;
+    line-height: 1;
+  }
+  .menu-text {
+    max-width: 345px;
+  }
+  .menu-desserts {
+    margin-bottom: 28px;
+  }
+  /*=====================/DECK-MENU/==================*/
 }
